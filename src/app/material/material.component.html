@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-12">
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-12">
+            <p></p>
+            <label for="">Novo Material:</label>
+            <form>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <p></p>
+                  <input [(ngModel)]="newMaterial.nome" type="text" class="form-control" id="nome" placeholder="Nome" name="x1">
+                  <span class="error" *ngIf="showMessageError">Campo obrigatório</span>
+                </div>
+                <div class="form-group col-md-6">
+                  <p></p>
+                  <input [(ngModel)]="newMaterial.qtd" type="text" class="form-control" id="qtd" placeholder="Quantidade" name="x2">
+                  <span class="error" *ngIf="showMessageError">Campo obrigatório</span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <input (click)="saveMaterial()" type="button" value="Cadastrar" class="btn btn-cadastrar">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="container-fluid">
+        <div class="row">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Material</th>
+                <th scope="col">Quantidade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let material of materiais" 
+                    [class.selected]="material === selectedMaterial" 
+                      (click)="selectMaterial(material)">
+                <td>{{ material.id }}</td>
+                <td>{{ material.nome }}</td>
+                <td>{{ material.qtd }}</td>
+                <th>
+                  <input (click)="deleteMaterial(material)" type="button" value="X" class="btn btn-delete">
+                </th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

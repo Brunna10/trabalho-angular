@@ -1,0 +1,64 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-12" id="back-cliente">
+            <p></p>
+            <label for="">Novo Cliente:</label>
+            <form>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <p></p>
+                  <input [(ngModel)]="newCliente.nome" type="text" class="form-control" id="nome" placeholder="Nome" name="x1">
+                  <span class="error" *ngIf="showMessageError">Campo obrigatório</span>
+                </div>
+                <div class="form-group col-md-6">
+                  <p></p>
+                  <input [(ngModel)]="newCliente.telefone" type="text" class="form-control" id="telefone" placeholder="telefone" name="x2">
+                  <span class="error" *ngIf="showMessageError">Campo obrigatório</span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <input (click)="saveCliente()" type="button" value="Cadastrar" class="btn btn-save">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="container-fluid">
+          <div class="row">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Telefone</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let cliente of clientes"
+                    [class.selected]="cliente === selectedCliente" 
+                    (click)="selectCliente(cliente)">
+                    <td>{{ cliente.id }}</td>
+                    <td>{{ cliente.nome }}</td>
+                    <td>{{ cliente.telefone }}</td>
+                    <th><input (click)="deleteCliente(cliente)" type="button" value="X" class="btn btn-delete"></th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
